@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solong.c                                           :+:      :+:    :+:   */
+/*   utils_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/03 19:30:27 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/03 19:38:29 by aramarak         ###   ########.fr       */
+/*   Created: 2025/06/03 19:32:10 by aramarak          #+#    #+#             */
+/*   Updated: 2025/06/03 19:45:10 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./solong.h"
+#include "../solong.h"
 
-int	main(int argc, char **argv)
+void	ft_exit_ok()
 {
-	// void	*mlx;
-	// void	*mlx_win;
+	exit(EXIT_SUCCESS);
+}
 
-	// mlx = mlx_init();
-	// mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	// mlx_loop(mlx);
+void	ft_exit_ko()
+{
+	exit(EXIT_FAILURE);
+}
 
-	if (argc != 2)
-	{
-		printf("Error\nUsage: ./solong <map_file>\n");
-		ft_exit_ko();
-	}
-	argv[1] = "maps/42.ber";
-	ft_exit_ok();
-	return (0);
+void	ft_exit_error()
+{
+	exit(EXIT_FAILURE);
 }
