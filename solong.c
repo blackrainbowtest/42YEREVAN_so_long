@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solong.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 19:30:27 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/03 19:38:29 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/07 10:09:08 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,12 @@
 
 int	main(int argc, char **argv)
 {
-	// void	*mlx;
-	// void	*mlx_win;
-
-	// mlx = mlx_init();
-	// mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	// mlx_loop(mlx);
-
+	t_data	data;
+	t_map	map;
+	
 	if (argc != 2)
-	{
-		printf("Error\nUsage: ./solong <map_file>\n");
-		ft_exit_ko();
-	}
+		ft_exit_error("Error\nUsage: ./solong <map_file>\n");
+	ft_check_extension(argv[1], ".ber");
 	argv[1] = "maps/42.ber";
 	ft_exit_ok();
 	return (0);

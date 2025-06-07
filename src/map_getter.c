@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solong.h                                           :+:      :+:    :+:   */
+/*   map_getter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/03 19:23:43 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/07 12:36:58 by root             ###   ########.fr       */
+/*   Created: 2025/06/07 12:33:17 by root              #+#    #+#             */
+/*   Updated: 2025/06/07 12:36:29 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SOLONG_H
-# define SOLONG_H
+#include "../solong.h"
 
-# include "./libft/libft.h"
-# include "./get_next_line/get_next_line_bonus.h"
-# include "minilibx-linux/mlx.h"
-# include "./includes/structs.h"
-
-
-// src/map_getter.c
-ft_check_extension(char *file_name, char *dup);
-
-// src/utils_exit.c
-void	ft_exit_success(char *msg);
-void	ft_exit_error(char *msg);
-
-
-#endif
+void	ft_check_extension(char *file_name, char *dup)
+{
+	if (ft_strlen(file_name) < 4
+		|| ft_strncmp(file_name + ft_strlen(file_name) - 4, dup, 4))
+		ft_exit_error("Error\nWrong file extension\n");
+}
