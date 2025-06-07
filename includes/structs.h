@@ -1,10 +1,10 @@
 typedef struct	s_img
 {
-	void	bg;
-	void	p_top;
-	void	p_bottom;
-	void	p_left;
-	void	p_right;
+	void	*bg;
+	void	*p_top;
+	void	*p_bottom;
+	void	*p_left;
+	void	*p_right;
 }				t_img;
 
 typedef struct	s_map
@@ -18,7 +18,7 @@ typedef struct	s_map
 
 typedef struct	s_data
 {
-	void	*mix;
+	void	*mlx;
 	void	*win;
 	int		width;
 	int		height;

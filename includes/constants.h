@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 20:00:17 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/06 20:00:34 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/07 15:16:59 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,12 @@
 # define DOWN 1
 # define LEFT -1
 # define RIGHT 1
+
+// Define shortcuts
+# define BER ".ber"
+# define WIN_NAME "So Long"
+
+// Define error messages
+# define ERR_USAGE "Error\nUsage: ./solong <map_file>\n"
+# define ERR_INIT "Error\nFailed to initialize mlx.\n"
+# define ERR_LOOP "Error\nFailed to loop game.\n"

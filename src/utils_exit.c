@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 19:32:10 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/07 12:34:05 by root             ###   ########.fr       */
+/*   Updated: 2025/06/07 15:05:04 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	ft_exit_success(char *msg)
 
 void	ft_exit_error(char *msg)
 {
-	ft_msg_put(msg, STDERR_FILENO);
+	if (!msg)
+		perror("Error");
+	else
+		perror(msg);
 	exit(EXIT_FAILURE);
 }

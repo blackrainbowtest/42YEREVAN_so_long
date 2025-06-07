@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solong.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 19:23:43 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/07 12:36:58 by root             ###   ########.fr       */
+/*   Updated: 2025/06/07 15:20:45 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 # include "./get_next_line/get_next_line_bonus.h"
 # include "minilibx-linux/mlx.h"
 # include "./includes/structs.h"
+# include "./includes/constants.h"
 
 
 // src/map_getter.c
-ft_check_extension(char *file_name, char *dup);
+void	ft_check_extension(char *file_name, char *dup);
 
 // src/utils_exit.c
 void	ft_exit_success(char *msg);
