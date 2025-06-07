@@ -8,8 +8,8 @@ CFLAGS := -Wall -Wextra -Werror -O3
 RM := rm -f
 
 # MLX
-MLX_DIR := mlx_linux
-MLX_NAME := mlx_Linux
+MLX_DIR := minilibx-linux
+MLX_NAME := mlx
 MLX_LIB := -L$(MLX_DIR) -l$(MLX_NAME) -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz
 
 # Function to set show commands or not
@@ -18,6 +18,7 @@ QUIET = $(if $(filter 0,$(VERBOSE)),@,)
 # Files
 SRCS := solong.c\
 		src/utils_exit.c\
+		includes/structs.h\
 
 OBJS := $(SRCS:.c=.o)
 
