@@ -1,6 +1,6 @@
 #include "../solong.h"
 
-void	ft_parse_map(t_data *data, char *filename)
+void	parse_map(t_data *data, char *filename)
 {
 	int		fd;
 	char	*line;
