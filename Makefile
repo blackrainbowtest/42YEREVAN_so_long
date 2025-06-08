@@ -16,8 +16,7 @@ MLX_LIB := -L$(MLX_DIR) -l$(MLX_NAME) -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -
 QUIET = $(if $(filter 0,$(VERBOSE)),@,)
 
 # Files
-SRCS := solong.c\
-		src/utils_exit.c\
+SRCS := main.c utils/exit.c src/parce.c
 
 OBJS := $(SRCS:.c=.o)
 
