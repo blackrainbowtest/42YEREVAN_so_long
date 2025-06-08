@@ -7,5 +7,7 @@ void	init_window(t_data *data)
 		ft_exit_error("Filed initializing mlx");
 	data_windth = data->map.x * IMG_W;
 	data->height = data->map.y * IMG_H;
-	data->win = mlx_new_window();
+	data->win = mlx_new_window(data->mlx, data->width, data->height, WIN_NAME);
+	if (!data->win)
+		ft_exit_error("mlx_new_window failed");
 }

@@ -7,7 +7,7 @@ void	ft_parse_map(t_data *data, char *filename)
 	char	*full;
 	char	*tmp;
 
-	if (ft_strlen(filename) < 5 || ft_strncpm(filename + ft_strlen(filename) - 4, ".ber", 4))
+	if (ft_strlen(filename) < 5 || ft_strncmp(filename + ft_strlen(filename) - 4, ".ber", 4))
 		ft_exit_error("Invalid file extension");
 	fd = open(filename, 0, O_RDONLY);
 	if (fd < 0)

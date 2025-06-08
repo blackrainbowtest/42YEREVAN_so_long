@@ -3,7 +3,7 @@
 
 #include "./libft/libft.h"
 #include "./get_next_line/get_next_line_bonus.h"
-#include "minilibix-linux/mlx.h"
+#include "./minilibx-linux/mlx.h"
 #include "./includes/constants.h"
 #include "./includes/structs.h"
 

@@ -1,6 +1,6 @@
 #include "../solong.h"
 
-void	ft_exit_error(char *msg)
+void	ft_exit_error(const char *msg)
 {
 	if (msg)
 	{
