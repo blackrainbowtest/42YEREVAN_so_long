@@ -1,20 +1,28 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct s_map
+typedef struct	s_map
 {
 	char	**map;
-	int		x; // ширина
-	int		y; // высота
-}	t_map;
+	int		x; // width
+	int		y; // height
+}				t_map;
 
-typedef struct s_data
+typedef struct	s_data
 {
 	void	*mlx;
 	void	*win;
 	int		width;
 	int		height;
 	t_map	map;
-}	t_data;
+}				t_data;
 
+typedef struct	s_img
+{
+	void	*floor;
+	void	*wall;
+	void	*player;
+	void	*collect;
+	void	*exit;
+}				t_img;
 #endif
