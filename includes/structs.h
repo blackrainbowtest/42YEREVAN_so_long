@@ -8,15 +8,6 @@ typedef struct	s_map
 	int		y; // height
 }				t_map;
 
-typedef struct	s_data
-{
-	void	*mlx;
-	void	*win;
-	int		width;
-	int		height;
-	t_map	map;
-}				t_data;
-
 typedef struct	s_img
 {
 	void	*floor;
@@ -25,4 +16,14 @@ typedef struct	s_img
 	void	*collect;
 	void	*exit;
 }				t_img;
+
+typedef struct	s_data
+{
+	void	*mlx;
+	void	*win;
+	int		width;
+	int		height;
+	t_map	map;
+	t_img	img;
+}				t_data;
 #endif

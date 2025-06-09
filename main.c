@@ -9,6 +9,7 @@ int	main(int argc, char **argv)
 	ft_bzero(&data, sizeof(t_data));
 	parse_map(&data, argv[1]);
 	init_window(&data);
+	init_images(&data);
 	render_map(&data);
 	mlx_loop(data.mlx);
 	return (0);

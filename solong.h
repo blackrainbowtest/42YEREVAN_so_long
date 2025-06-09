@@ -11,6 +11,6 @@ void	ft_exit_error(const char *msg);
 void	parse_map(t_data *data, char *filename);
 void	init_window(t_data *data);
 void	render_map(t_data *data);
-void	render_map(t_data *data);
+void	init_images(t_data *data);
 
 #endif
