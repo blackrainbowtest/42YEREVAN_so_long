@@ -10,6 +10,7 @@ int	main(int argc, char **argv)
 	parse_map(&data, argv[1]);
 	init_window(&data);
 	init_images(&data);
+	mlx_key_hook(data.win, handle_keys, &data);
 	render_map(&data);
 	mlx_loop(data.mlx);
 	return (0);

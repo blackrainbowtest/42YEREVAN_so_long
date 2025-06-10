@@ -12,5 +12,7 @@ void	parse_map(t_data *data, char *filename);
 void	init_window(t_data *data);
 void	render_map(t_data *data);
 void	init_images(t_data *data);
+int		handle_keys(int keycode, t_data *data);
+void	ft_exit_success(char *msg);
 
 #endif

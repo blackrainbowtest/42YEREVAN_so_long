@@ -10,3 +10,10 @@ void	ft_exit_error(const char *msg)
 	}
 	exit(EXIT_FAILURE);
 }
+
+void	ft_exit_success(char *msg)
+{
+	ft_putstr_fd(msg, 1);
+	ft_putchar_fd('\n', 1);
+	exit(EXIT_SUCCESS);
+}
