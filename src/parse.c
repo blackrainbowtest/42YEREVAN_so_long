@@ -31,3 +31,29 @@ void	parse_map(t_data *data, char *filename)
 		data->map.y++;
 	data->map.x = ft_strlen(data->map.map[0]);
 }
+
+void	find_player_position(t_data *data)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < data->map.y)
+	{
+		x = 0;
+		printf("Checking row %d\n", y);
+		while (x < data->map.x)
+		{
+			printf("Checking column %d\n", x);
+			if (data->map.map[y][x] == 'P')
+			{
+				data->player_x = x;
+				data->player_y = y;
+				return ;
+			}
+			x++;
+		}
+		y++;
+	}
+	ft_exit_error("Player position not found");
+}

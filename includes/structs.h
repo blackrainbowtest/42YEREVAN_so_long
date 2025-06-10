@@ -23,6 +23,8 @@ typedef struct	s_data
 	void	*win;
 	int		width;
 	int		height;
+	int		player_x;
+	int		player_y;
 	t_map	map;
 	t_img	img;
 }				t_data;
