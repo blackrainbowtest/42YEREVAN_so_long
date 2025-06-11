@@ -25,6 +25,8 @@ typedef struct	s_data
 	int		height;
 	int		player_x;
 	int		player_y;
+	int		player_moves;
+	int		collectibles;
 	t_map	map;
 	t_img	img;
 }				t_data;

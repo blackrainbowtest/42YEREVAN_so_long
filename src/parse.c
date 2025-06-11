@@ -30,6 +30,20 @@ void	parse_map(t_data *data, char *filename)
 	while (data->map.map[data->map.y])
 		data->map.y++;
 	data->map.x = ft_strlen(data->map.map[0]);
+	data->collectibles = 0;
+
+	int y = 0;
+	while (y < data->map.y)
+	{
+		int x = 0;
+		while (x < data->map.x)
+		{
+			if (data->map.map[y][x] == COLLECT)
+				data->collectibles++;
+			x++;
+		}
+		y++;
+	}
 }
 
 void	find_player_position(t_data *data)
