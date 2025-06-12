@@ -16,5 +16,6 @@ int		handle_keys(int keycode, t_data *data);
 void	ft_exit_success(char *msg);
 void	find_player_position(t_data *data);
 void	move_player(int dx, int dy, t_data *data);
+void	validate_rectangle(t_data *data);
 
 #endif
