@@ -6,12 +6,19 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 23:22:22 by root              #+#    #+#             */
-/*   Updated: 2025/06/12 23:30:19 by root             ###   ########.fr       */
+/*   Updated: 2025/06/12 23:32:41 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../solong.h"
 
+/**
+* @file parse.c
+*
+* @brief This function reads the map file and returns its content as a string
+* @param filename Name of the map file to read
+* @returns A string containing the content of the map file
+*/
 static char	*read_map_file(char *filename)
 {
 	int		fd;
@@ -38,6 +45,14 @@ static char	*read_map_file(char *filename)
 	return (full);
 }
 
+/**
+* @file parse.c
+*
+* @brief This function reads the map file and splits it into lines
+* @param data Pointer to the game data structure
+* @param filename Name of the map file to read
+* @returns void
+*/
 void	parse_map(t_data *data, char *filename)
 {
 	char	*full;
