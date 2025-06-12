@@ -1,8 +1,8 @@
 #ifndef CONSTANTS_H
 # define CONSTANTS_H
 
-# define IMG_W 64
-# define IMG_H 64
+# define IMG_W 90
+# define IMG_H 90
 
 # define WIN_NAME "so_long"
 
@@ -19,8 +19,9 @@
 # define ERR_EXT "Invalid file extension"
 # define ERR_EMPTY "Empty map file"
 
-# define ISLINUX 0
 # ifdef __linux__
 #  define ISLINUX 1
+# else
+#  define ISLINUX 0
 # endif
 #endif
