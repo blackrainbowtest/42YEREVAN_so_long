@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 23:22:22 by root              #+#    #+#             */
-/*   Updated: 2025/06/12 23:32:41 by root             ###   ########.fr       */
+/*   Updated: 2025/06/12 23:52:03 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 * @param filename Name of the map file to read
 * @returns A string containing the content of the map file
 */
-static char	*read_map_file(char *filename)
+static char	*read_map_file(char *filename, t_data *data)
 {
 	int		fd;
 	char	*line;
@@ -28,15 +28,21 @@ static char	*read_map_file(char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		ft_exit_error("Failed to open map file");
+		clean_exit(data, "Failed to open map file", 1);
 	full = ft_strdup("");
 	if (!full)
-		ft_exit_error("Malloc failed");
+		clean_exit(data, "Malloc failed", 1);
 	line = get_next_line(fd);
 	while (line)
 	{
 		tmp = full;
 		full = ft_strjoin(full, line);
+		if (!full)
+		{
+			free(line);
+			free(tmp);
+			clean_exit(data, "ft_strjoin failed", 1);
+		}
 		free(tmp);
 		free(line);
 		line = get_next_line(fd);
@@ -59,12 +65,14 @@ void	parse_map(t_data *data, char *filename)
 
 	if (ft_strlen(filename) < 5
 		|| ft_strncmp(filename + ft_strlen(filename) - 4, ".ber", 4))
-		ft_exit_error("Invalid file extension");
-	full = read_map_file(filename);
+		clean_exit(data, "Invalid file extension", 1);
+	full = read_map_file(filename, data);
 	if (!full || !*full)
-		ft_exit_error("Empty map file");
+		clean_exit(data, "Empty map file", 1);
 	data->map.map = ft_split(full, '\n');
 	free(full);
+	if (!data->map.map)
+		clean_exit(data, "ft_split failed", 1);
 	data->map.y = 0;
 	while (data->map.map[data->map.y])
 		data->map.y++;
@@ -100,5 +108,5 @@ void	find_player_position(t_data *data)
 		}
 		y++;
 	}
-	ft_exit_error("Player position not found");
+	clean_exit(data, "Player position not found", 1);
 }
