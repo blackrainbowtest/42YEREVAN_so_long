@@ -19,4 +19,8 @@
 # define ERR_EXT "Invalid file extension"
 # define ERR_EMPTY "Empty map file"
 
+# define ISLINUX 0
+# ifdef __linux__
+#  define ISLINUX 1
+# endif
 #endif

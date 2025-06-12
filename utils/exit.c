@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/13 00:53:51 by root              #+#    #+#             */
+/*   Updated: 2025/06/13 00:58:02 by root             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../solong.h"
 
 void	ft_exit_error(const char *msg)
@@ -20,7 +32,9 @@ void	ft_exit_success(char *msg)
 
 void	ft_free_map(char **map, int lines)
 {
-	int	i = 0;
+	int	i;
+
+	i = 0;
 	while (i < lines)
 	{
 		free(map[i]);
@@ -29,23 +43,8 @@ void	ft_free_map(char **map, int lines)
 	free(map);
 }
 
-int	clean_exit(t_data *data, const char *msg, int code)
+static void	mlx_destroy_all(t_data *data)
 {
-	int	y;
-
-	// Освобождаем карту
-	if (data->map.map)
-	{
-		y = 0;
-		while (y < data->map.y)
-		{
-			free(data->map.map[y]);
-			y++;
-		}
-		free(data->map.map);
-	}
-
-	// Уничтожаем изображения
 	if (data->img.floor)
 		mlx_destroy_image(data->mlx, data->img.floor);
 	if (data->img.wall)
@@ -56,16 +55,30 @@ int	clean_exit(t_data *data, const char *msg, int code)
 		mlx_destroy_image(data->mlx, data->img.exit);
 	if (data->img.player)
 		mlx_destroy_image(data->mlx, data->img.player);
-
-	// Уничтожаем окно
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
+}
 
-	#ifdef __linux__
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
-	#endif
+int	clean_exit(t_data *data, const char *msg, int code)
+{
+	int	y;
 
+	if (data->map.map)
+	{
+		y = 0;
+		while (y < data->map.y)
+		{
+			free(data->map.map[y]);
+			y++;
+		}
+		free(data->map.map);
+	}
+	mlx_destroy_all(data);
+	if (ISLINUX)
+	{
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
+	}
 	if (msg)
 	{
 		ft_putstr_fd("Exit: ", 1);
