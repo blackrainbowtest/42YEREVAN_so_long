@@ -3,7 +3,7 @@
 int	handle_keys(int keycode, t_data *data)
 {
 	if (keycode == 65307)
-		ft_exit_success("Exit");
+		return (clean_exit(data, "Exit by ESC", EXIT_SUCCESS));
 
 	if (keycode == 'W' || keycode == 119 || keycode == 65362)
 		move_player(0, -1, data);
@@ -47,4 +47,9 @@ void	move_player(int dx, int dy, t_data *data)
 	render_map(data);
 	if (next_tile == EXIT && data->collectibles == 0)
 		ft_exit_success("You win!");
+}
+
+int	handle_exit(t_data *data)
+{
+	return (clean_exit(data, "Exit by close button", EXIT_SUCCESS));
 }

@@ -17,5 +17,11 @@ void	ft_exit_success(char *msg);
 void	find_player_position(t_data *data);
 void	move_player(int dx, int dy, t_data *data);
 void	validate_rectangle(t_data *data);
+void	validate_symbols_and_counts(t_data *data);
+void	validate_walls(t_data *data);
+void	validate_path(t_data *data);
+void	ft_free_map(char **map, int lines);
+int		handle_exit(t_data *data);
+int		clean_exit(t_data *data, const char *msg, int code);
 
 #endif

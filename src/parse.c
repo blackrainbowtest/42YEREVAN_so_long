@@ -31,19 +31,6 @@ void	parse_map(t_data *data, char *filename)
 		data->map.y++;
 	data->map.x = ft_strlen(data->map.map[0]);
 	data->collectibles = 0;
-
-	int y = 0;
-	while (y < data->map.y)
-	{
-		int x = 0;
-		while (x < data->map.x)
-		{
-			if (data->map.map[y][x] == COLLECT)
-				data->collectibles++;
-			x++;
-		}
-		y++;
-	}
 }
 
 void	find_player_position(t_data *data)
@@ -55,10 +42,8 @@ void	find_player_position(t_data *data)
 	while (y < data->map.y)
 	{
 		x = 0;
-		printf("Checking row %d\n", y);
 		while (x < data->map.x)
 		{
-			printf("Checking column %d\n", x);
 			if (data->map.map[y][x] == 'P')
 			{
 				data->player_x = x;
