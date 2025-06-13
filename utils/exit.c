@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 00:53:51 by root              #+#    #+#             */
-/*   Updated: 2025/06/13 01:02:26 by root             ###   ########.fr       */
+/*   Updated: 2025/06/13 20:09:27 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	clean_exit(t_data *data, const char *msg, int code)
 		free(data->map.map);
 	}
 	mlx_destroy_all(data);
-	if (ISLINUX)
+	if (ISLINUX && data->mlx)
 	{
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
