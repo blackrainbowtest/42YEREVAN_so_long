@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_images.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 23:42:21 by root              #+#    #+#             */
-/*   Updated: 2025/06/12 23:45:03 by root             ###   ########.fr       */
+/*   Updated: 2025/06/13 17:41:23 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	load_image(void **img, t_data *data, char *path)
 */
 void	init_images(t_data *data)
 {
-	load_image(&data->img.floor, data, "assets/sand.xpm");
+	load_image(&data->img.floor, data, "assets/floor.xpm");
 	load_image(&data->img.wall, data, "assets/wall.xpm");
 	load_image(&data->img.player, data, "assets/player.xpm");
 	load_image(&data->img.collect, data, "assets/gas.xpm");

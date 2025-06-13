@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 23:22:22 by root              #+#    #+#             */
-/*   Updated: 2025/06/12 23:52:03 by root             ###   ########.fr       */
+/*   Updated: 2025/06/13 17:45:18 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,6 @@ static char	*read_map_file(char *filename, t_data *data)
 	{
 		tmp = full;
 		full = ft_strjoin(full, line);
-		if (!full)
-		{
-			free(line);
-			free(tmp);
-			clean_exit(data, "ft_strjoin failed", 1);
-		}
 		free(tmp);
 		free(line);
 		line = get_next_line(fd);
