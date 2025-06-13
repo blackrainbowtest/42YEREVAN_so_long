@@ -29,7 +29,7 @@ void	validate_rectangle(t_data *data)
 	while (data->map.map[y])
 	{
 		if ((int)ft_strlen(data->map.map[y]) != line_len)
-			clean_exit(data, "Map is not rectangular", EXIT_FAILURE);
+			clean_exit(data, ERR_MAP_RECTANGULAR, EXIT_FAILURE);
 		y++;
 	}
 }
@@ -52,7 +52,7 @@ static void	check_char(t_data *data, char ch, t_counts *counts)
 	else if (ch == COLLECT)
 		counts->c++;
 	else if (ch != WALL && ch != FLOOR)
-		clean_exit(data, "Map contains invalid character", 1);
+		clean_exit(data, ERR_MAP_CONTAIN_INVALID, EXIT_FAILURE);
 }
 
 /**
@@ -83,20 +83,21 @@ void	validate_symbols_and_counts(t_data *data)
 		y++;
 	}
 	if (counts.p != 1)
-		clean_exit(data, "Map must contain exactly one player (P)", 1);
+		clean_exit(data, ERR_MAP_CONTAIN_P, 1);
 	if (counts.e != 1)
-		clean_exit(data, "Map must contain exactly one exit (E)", 1);
+		clean_exit(data, ERR_MAP_CONTAIN_E, 1);
 	if (counts.c < 1)
-		clean_exit(data, "Map must contain at least one collectible (C)", 1);
+		clean_exit(data, ERR_MAP_CONTAIN_C, 1);
 	data->collectibles = counts.c;
 }
- /**
-  * @file validate.c
-  * 
-  * @brief Validates that the map is surrounded by walls
-  * @param data Pointer to the game data structure
-  * @return void
-  */
+
+/**
+* @file validate.c
+ * 
+ * @brief Validates that the map is surrounded by walls
+ * @param data Pointer to the game data structure
+ * @return void
+ */
 void	validate_walls(t_data *data)
 {
 	int	i;
@@ -109,76 +110,119 @@ void	validate_walls(t_data *data)
 	while (i < width)
 	{
 		if (data->map.map[0][i] != WALL || data->map.map[height - 1][i] != WALL)
-			ft_exit_error("Top or bottom border is not closed");
+			clean_exit(data, ERR_BORDER_TB, EXIT_FAILURE);
 		i++;
 	}
 	i = 0;
 	while (i < height)
 	{
 		if (data->map.map[i][0] != WALL || data->map.map[i][width - 1] != WALL)
-			ft_exit_error("Left or right border is not closed");
+			clean_exit(data, ERR_BORDER_LR, EXIT_FAILURE);
 		i++;
 	}
 }
 
+/**
+ * @file validate.c
+ * 
+ * @brief Flood fill algorithm to mark reachable tiles from the player's position
+ * @param map The map to fill
+ * @param x The x-coordinate of the current tile
+ * @param y The y-coordinate of the current tile
+ * @return void
+ */
 static void	fill(char **map, int x, int y)
 {
-	if (map[y][x] == WALL || map[y][x] == 'F')
-		return;
-	map[y][x] = 'F';
-
+	if (map[y][x] == WALL || map[y][x] == FILL)
+		return ;
+	map[y][x] = FILL;
 	fill(map, x + 1, y);
 	fill(map, x - 1, y);
 	fill(map, x, y + 1);
 	fill(map, x, y - 1);
 }
 
-void	validate_path(t_data *data)
+/**
+ * @file validate.c
+ * 
+ * @brief Creates a copy of the map for path validation
+ * @param data Pointer to the game data structure
+ * @return A dynamically allocated copy of the map
+ */
+static char	**copy_map(t_data *data)
 {
 	char	**copy;
 	int		y;
-	int		x;
-	int		reachable_c = 0;
-	int		reachable_e = 0;
 
-	// Копируем карту
 	copy = malloc(sizeof(char *) * (data->map.y + 1));
 	if (!copy)
-		ft_exit_error("Malloc failed in validate_path");
-
+		clean_exit(data, ERR_MALLOC_VAL, EXIT_FAILURE);
 	y = 0;
 	while (y < data->map.y)
 	{
 		copy[y] = ft_strdup(data->map.map[y]);
 		if (!copy[y])
-			ft_exit_error("ft_strdup failed in validate_path");
+			clean_exit(data, ERR_MALLOC_VAL, EXIT_FAILURE);
 		y++;
 	}
 	copy[y] = NULL;
+	return (copy);
+}
 
-	// Flood fill от позиции игрока
-	fill(copy, data->player_x, data->player_y);
+/**
+ * @file validate.c
+ * 
+ * @brief Counts the reachable collectibles and exit tiles in the map
+ * @param data Pointer to the game data structure
+ * @param copy The map copy to check
+ * @param reachable_c Pointer to the count of reachable collectibles
+ * @param reachable_e Pointer to the count of reachable exit tiles
+ * @return void
+ */
+static void	count_reachable(t_data *data, char **copy,
+				int *reachable_c, int *reachable_e)
+{
+	int	y;
+	int	x;
 
-	// Подсчёт достижимых C и E
 	y = 0;
 	while (y < data->map.y)
 	{
 		x = 0;
 		while (x < data->map.x)
 		{
-			if (data->map.map[y][x] == COLLECT && copy[y][x] == 'F')
-				reachable_c++;
-			if (data->map.map[y][x] == EXIT && copy[y][x] == 'F')
-				reachable_e++;
+			if (data->map.map[y][x] == COLLECT && copy[y][x] == FILL)
+				(*reachable_c)++;
+			if (data->map.map[y][x] == EXIT && copy[y][x] == FILL)
+				(*reachable_e)++;
 			x++;
 		}
 		y++;
 	}
+}
 
+/**
+ * @file validate.c
+ * 
+ * @brief Validates the path from the player's position to 
+ * all collectibles and the exit
+ * @param data Pointer to the game data structure
+ * @return void
+ */
+void	validate_path(t_data *data)
+{
+	char	**copy;
+	int		reachable_c;
+	int		reachable_e;
+
+	reachable_c = 0;
+	reachable_e = 0;
+	copy = copy_map(data);
+	fill(copy, data->player_x, data->player_y);
+	count_reachable(data, copy, &reachable_c, &reachable_e);
 	ft_free_map(copy, data->map.y);
-
 	if (reachable_c != data->collectibles)
-		ft_exit_error("Not all collectibles are reachable");
+		clean_exit(data, "Not all collectibles are reachable", 1);
 	if (reachable_e != 1)
-		ft_exit_error("Exit is not reachable");
+		clean_exit(data, "Exit is not reachable", 1);
 }
