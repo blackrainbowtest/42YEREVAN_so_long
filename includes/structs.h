@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/13 17:26:54 by aramarak          #+#    #+#             */
+/*   Updated: 2025/06/13 17:27:30 by aramarak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char	**map;
-	int		x; // width
-	int		y; // height
+	int		x;
+	int		y;
 }				t_map;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*floor;
 	void	*wall;
@@ -17,7 +29,7 @@ typedef struct	s_img
 	void	*exit;
 }				t_img;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void	*mlx;
 	void	*win;
