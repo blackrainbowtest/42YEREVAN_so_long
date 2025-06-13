@@ -12,6 +12,13 @@
 
 #include "../solong.h"
 
+/**
+ * @file validate.c
+ * 
+ * @brief Validates the map structure and contents
+ * @param data Pointer to the game data structure
+ * @return void
+ */
 void	validate_rectangle(t_data *data)
 {
 	int	y;
@@ -27,55 +34,84 @@ void	validate_rectangle(t_data *data)
 	}
 }
 
+/**
+ * @file validate.c
+ * 
+ * @brief Checks if the map contains valid characters and counts them
+ * @param data Pointer to the game data structure
+ * @param ch The character to check
+ * @param counts Pointer to the counts structure to update
+ * @return void
+ */
+static void	check_char(t_data *data, char ch, t_counts *counts)
+{
+	if (ch == PLAYER)
+		counts->p++;
+	else if (ch == EXIT)
+		counts->e++;
+	else if (ch == COLLECT)
+		counts->c++;
+	else if (ch != WALL && ch != FLOOR)
+		clean_exit(data, "Map contains invalid character", 1);
+}
+
+/**
+ * @file validate.c
+ * 
+ * @brief Validates the symbols and counts their occurrences in the map
+ * @param data Pointer to the game data structure
+ * @return void
+ */
 void	validate_symbols_and_counts(t_data *data)
 {
-	int	y = 0;
-	int	x;
-	int	p_count = 0;
-	int	e_count = 0;
-	int	c_count = 0;
+	int			x;
+	int			y;
+	t_counts	counts;
 
+	counts.p = 0;
+	counts.e = 0;
+	counts.c = 0;
+	y = 0;
 	while (y < data->map.y)
 	{
 		x = 0;
 		while (x < data->map.x)
 		{
-			char ch = data->map.map[y][x];
-			if (ch == PLAYER)
-				p_count++;
-			else if (ch == EXIT)
-				e_count++;
-			else if (ch == COLLECT)
-				c_count++;
-			else if (ch != WALL && ch != FLOOR)
-				ft_exit_error("Map contains invalid character");
+			check_char(data, data->map.map[y][x], &counts);
 			x++;
 		}
 		y++;
 	}
-	if (p_count != 1)
-		ft_exit_error("Map must contain exactly one player (P)");
-	if (e_count != 1)
-		ft_exit_error("Map must contain exactly one exit (E)");
-	if (c_count < 1)
-		ft_exit_error("Map must contain at least one collectible (C)");
-
-	data->collectibles = c_count;
+	if (counts.p != 1)
+		clean_exit(data, "Map must contain exactly one player (P)", 1);
+	if (counts.e != 1)
+		clean_exit(data, "Map must contain exactly one exit (E)", 1);
+	if (counts.c < 1)
+		clean_exit(data, "Map must contain at least one collectible (C)", 1);
+	data->collectibles = counts.c;
 }
-
+ /**
+  * @file validate.c
+  * 
+  * @brief Validates that the map is surrounded by walls
+  * @param data Pointer to the game data structure
+  * @return void
+  */
 void	validate_walls(t_data *data)
 {
 	int	i;
-	int	width = data->map.x;
-	int	height = data->map.y;
+	int	width;
+	int	height;
 
+	width = data->map.x;
+	height = data->map.y;
+	i = 0;
 	while (i < width)
 	{
 		if (data->map.map[0][i] != WALL || data->map.map[height - 1][i] != WALL)
 			ft_exit_error("Top or bottom border is not closed");
 		i++;
 	}
-
 	i = 0;
 	while (i < height)
 	{

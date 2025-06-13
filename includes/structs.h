@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 17:26:54 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/13 17:27:30 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/13 17:57:59 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,11 @@ typedef struct s_data
 	t_map	map;
 	t_img	img;
 }				t_data;
+
+typedef struct s_counts
+{
+	int		p;
+	int		e;
+	int		c;
+}				t_counts;
 #endif
