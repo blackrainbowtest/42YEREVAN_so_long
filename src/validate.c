@@ -1,14 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/13 17:48:38 by aramarak          #+#    #+#             */
+/*   Updated: 2025/06/13 17:48:38 by aramarak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../solong.h"
 
 void	validate_rectangle(t_data *data)
 {
-	int	y = 0;
-	int	line_len = ft_strlen(data->map.map[0]);
+	int	y;
+	int	line_len;
 
+	y = 0;
+	line_len = ft_strlen(data->map.map[0]);
 	while (data->map.map[y])
 	{
 		if ((int)ft_strlen(data->map.map[y]) != line_len)
-			ft_exit_error("Map is not rectangular");
+			clean_exit(data, "Map is not rectangular", EXIT_FAILURE);
 		y++;
 	}
 }
