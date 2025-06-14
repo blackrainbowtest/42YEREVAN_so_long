@@ -4,7 +4,7 @@ NAME := so_long
 
 # Compiler and flags
 CC := cc
-#CFLAGS := -Wall -Wextra -Werror -O3
+CFLAGS := -Wall -Wextra -Werror -O3
 RM := rm -f
 
 # MLX

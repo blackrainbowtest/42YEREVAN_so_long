@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 17:28:39 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/14 10:27:16 by root             ###   ########.fr       */
+/*   Updated: 2025/06/14 15:24:44 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	render_map(t_data *data)
 {
 	int		x;
 	int		y;
-	char	tile;
 
 	y = -1;
 	while (++y < data->map.y)
