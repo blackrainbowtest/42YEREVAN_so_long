@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_images.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 23:42:21 by root              #+#    #+#             */
-/*   Updated: 2025/06/13 17:53:22 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/14 09:12:21 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void	init_images(t_data *data)
 	load_image(&data->img.floor, data, "assets/floor.xpm");
 	load_image(&data->img.wall, data, "assets/wall.xpm");
 	load_image(&data->img.player, data, "assets/player.xpm");
-	load_image(&data->img.collect, data, "assets/gas.xpm");
-	load_image(&data->img.exit, data, "assets/helicopter.xpm");
+	load_image(&data->img.collect, data, "assets/berries.xpm");
+	load_image(&data->img.exit, data, "assets/home.xpm");
 }
