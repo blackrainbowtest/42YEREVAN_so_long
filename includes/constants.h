@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 17:26:44 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/13 18:31:03 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/14 11:12:02 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define EXIT 'E'
 # define COLLECT 'C'
 # define FILL 'F'
+# define LOCKED 'L'
 
 # define ERR_USAGE "Usage: ./so_long <map_file>"
 # define ERR_MLX_INIT "mlx_init failed"

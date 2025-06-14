@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:55 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/14 10:11:33 by root             ###   ########.fr       */
+/*   Updated: 2025/06/14 11:14:14 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,16 @@
  */
 void	fill(char **map, int x, int y)
 {
-	if (map[y][x] == WALL || map[y][x] == FILL)
+	if (map[y][x] == WALL || map[y][x] == FILL || map[y][x] == LOCKED)
 		return ;
-	map[y][x] = FILL;
+	if (map[y][x] == EXIT)
+	{
+		map[y][x] = LOCKED;
+		return ;
+	}
+	else
+		map[y][x] = FILL;
+	
 	fill(map, x + 1, y);
 	fill(map, x - 1, y);
 	fill(map, x, y + 1);
@@ -83,7 +90,7 @@ void	count_reachable(t_data *data, char **copy,
 		{
 			if (data->map.map[y][x] == COLLECT && copy[y][x] == FILL)
 				(*reachable_c)++;
-			if (data->map.map[y][x] == EXIT && copy[y][x] == FILL)
+			if (data->map.map[y][x] == EXIT && copy[y][x] == LOCKED)
 				(*reachable_e)++;
 			x++;
 		}
