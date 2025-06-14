@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 17:45:50 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/14 10:30:41 by root             ###   ########.fr       */
+/*   Updated: 2025/06/14 14:14:42 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	move_player(int dx, int dy, t_data *data)
 	printf("Moves: %d\n", data->player_moves);
 	render_map(data);
 	if (next_tile == EXIT && data->collectibles == 0)
-		ft_exit_success("You win!");
+		ft_exit_success("You win!", data);
 }
 
 /**

@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:49:04 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/13 18:57:50 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/14 14:14:30 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	validate_walls(t_data *data);
 void	validate_path(t_data *data);
 
 void	ft_exit_error(const char *msg);
-void	ft_exit_success(char *msg);
+void	ft_exit_success(char *msg, t_data *data);
 void	ft_free_map(char **map, int lines);
 int		clean_exit(t_data *data, const char *msg, int code);
 

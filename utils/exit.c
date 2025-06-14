@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 00:53:51 by root              #+#    #+#             */
-/*   Updated: 2025/06/14 09:36:32 by root             ###   ########.fr       */
+/*   Updated: 2025/06/14 14:14:05 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,9 @@ void	ft_exit_error(const char *msg)
 * @param msg Message to display on successful exit
 * @returns void
 */
-void	ft_exit_success(char *msg)
+void	ft_exit_success(char *msg, t_data *data)
 {
-	ft_putstr_fd(msg, 1);
-	ft_putchar_fd('\n', 1);
-	exit(EXIT_SUCCESS);
+	clean_exit(data, msg, EXIT_SUCCESS);
 }
 
 /**
