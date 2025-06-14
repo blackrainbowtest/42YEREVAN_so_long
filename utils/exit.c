@@ -6,20 +6,20 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 00:53:51 by root              #+#    #+#             */
-/*   Updated: 2025/06/14 14:50:02 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/14 15:00:53 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../solong.h"
 
 /**
-* @file exit.c
-*
-* @brief Prints an error message and exits the program
-* @param msg Message to display on error
-* @param code Exit code to return
-* @returns void
-*/
+ * @file exit.c
+ *
+ * @brief Prints an error message and exits the program
+ * @param msg Message to display on error
+ * @param code Exit code to return
+ * @returns void
+ */
 void	ft_print_exit(const char *msg, int code)
 {
 	if (code)
@@ -32,25 +32,25 @@ void	ft_print_exit(const char *msg, int code)
 }
 
 /**
-* @file exit.c
-*
-* @brief Handles successful exit for the game
-* @param msg Message to display on successful exit
-* @returns void
-*/
+ * @file exit.c
+ *
+ * @brief Handles successful exit for the game
+ * @param msg Message to display on successful exit
+ * @returns void
+ */
 void	ft_exit_success(char *msg, t_data *data)
 {
 	clean_exit(data, msg, EXIT_SUCCESS);
 }
 
 /**
-* @file exit.c
-*
-* @brief Frees the allocated memory for the map
-* @param map The map to be freed
-* @param lines The number of lines in the map
-* @returns void
-*/
+ * @file exit.c
+ *
+ * @brief Frees the allocated memory for the map
+ * @param map The map to be freed
+ * @param lines The number of lines in the map
+ * @returns void
+ */
 void	ft_free_map(char **map, int lines)
 {
 	int	i;
@@ -65,12 +65,12 @@ void	ft_free_map(char **map, int lines)
 }
 
 /**
-* @file exit.c
-*
-* @brief Destroys all images and the window created by MiniLibX
-* @param data Pointer to the game data structure
-* @returns void
-*/
+ * @file exit.c
+ *
+ * @brief Destroys all images and the window created by MiniLibX
+ * @param data Pointer to the game data structure
+ * @returns void
+ */
 static void	mlx_destroy_all(t_data *data)
 {
 	if (data->img.floor)
@@ -88,14 +88,14 @@ static void	mlx_destroy_all(t_data *data)
 }
 
 /**
-* @file exit.c
-*
-* @brief Cleans up resources and exits the game
-* @param data Pointer to the game data structure
-* @param msg Message to display on exit
-* @param code Exit code to return
-* @returns exit code
-*/
+ * @file exit.c
+ *
+ * @brief Cleans up resources and exits the game
+ * @param data Pointer to the game data structure
+ * @param msg Message to display on exit
+ * @param code Exit code to return
+ * @returns exit code
+ */
 int	clean_exit(t_data *data, const char *msg, int code)
 {
 	int	y;

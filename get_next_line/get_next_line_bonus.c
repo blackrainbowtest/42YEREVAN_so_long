@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 16:01:03 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/14 14:54:58 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/14 14:58:02 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,29 @@ char	*read_stroke(int fd, char *store)
 
 /**
  * @file get_next_line_bonus.c
+ * 
+ * @brief Finds the next line in the string and returns it
+ * @param ptr The string to search for the next line
+ * @returns The next line found in the string
+ */
+static void	free_store(char **store)
+{
+	int	i;
+
+	i = 0;
+	while (i < 1024)
+	{
+		if (store[i])
+		{
+			free(store[i]);
+			store[i] = NULL;
+		}
+		i++;
+	}
+}
+
+/**
+ * @file get_next_line_bonus.c
  *
  * @brief Finds the next line in the string and returns it
  * @param ptr The string to search for the next line
@@ -59,19 +82,11 @@ char	*get_next_line(int fd)
 {
 	static char	*store[1024];
 	char		*line;
+	int			i;
 
 	if (fd == -42)
 	{
-		int i = 0;
-		while (i < 1024)
-		{
-			if (store[i])
-			{
-				free(store[i]);
-				store[i] = NULL;
-			}
-			i++;
-		}
+		free_store(store);
 		return (NULL);
 	}
 	if (fd < 0 || BUFFER_SIZE <= 0)

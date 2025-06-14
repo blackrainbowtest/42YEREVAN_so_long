@@ -6,11 +6,33 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 23:22:22 by root              #+#    #+#             */
-/*   Updated: 2025/06/14 14:53:18 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/14 15:01:32 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../solong.h"
+
+/**
+ * @file parse.c
+ *
+ * @brief This function checks if the line is empty and handles it accordingly
+ * @param line The line to check
+ * @param full The full map content read so far
+ * @param fd File descriptor of the map file
+ * @param data Pointer to the game data structure
+ * @returns void
+ */
+static void	check_empty_line(char *line, char *full, int fd, t_data *data)
+{
+	if (line[0] == '\n')
+	{
+		free(line);
+		get_next_line(-42);
+		free(full);
+		close(fd);
+		clean_exit(data, "Map contains empty lines!", EXIT_FAILURE);
+	}
+}
 
 /**
  * @file parse.c
@@ -35,13 +57,7 @@ static char	*read_map_file(char *filename, t_data *data)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (line[0] == '\n')
-		{
-			free(line);
-			line = get_next_line(-42);
-			free(full);
-			clean_exit(data, "Map contains empty lines!", EXIT_FAILURE);
-		}
+		check_empty_line(line, full, fd, data);
 		tmp = full;
 		full = ft_strjoin(full, line);
 		free(tmp);
