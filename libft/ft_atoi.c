@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 21:07:21 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/14 15:03:35 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/14 15:30:13 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,3 @@ int	ft_atoi(const char *str)
 	}
 	return (result * sign);
 }
-
