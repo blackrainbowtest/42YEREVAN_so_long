@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 00:53:51 by root              #+#    #+#             */
-/*   Updated: 2025/06/14 14:14:05 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/14 14:50:02 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,20 @@
 /**
 * @file exit.c
 *
-* @brief Handles error and success exits for the game
-* @param msg Message to display on exit
+* @brief Prints an error message and exits the program
+* @param msg Message to display on error
+* @param code Exit code to return
 * @returns void
 */
-void	ft_exit_error(const char *msg)
+void	ft_print_exit(const char *msg, int code)
 {
+	if (code)
+		ft_putstr_fd("Error\n", 1);
 	if (msg)
 	{
-		ft_putstr_fd("Error\n", STDERR_FILENO);
-		ft_putstr_fd(msg, STDERR_FILENO);
-		ft_putchar_fd('\n', STDERR_FILENO);
+		ft_putstr_fd((char *)msg, 1);
+		ft_putchar_fd('\n', 1);
 	}
-	exit(EXIT_FAILURE);
 }
 
 /**
@@ -99,7 +100,7 @@ int	clean_exit(t_data *data, const char *msg, int code)
 {
 	int	y;
 
-	if (data->map.map)
+	if (data && data->map.map)
 	{
 		y = 0;
 		while (y < data->map.y)
@@ -109,18 +110,13 @@ int	clean_exit(t_data *data, const char *msg, int code)
 		}
 		free(data->map.map);
 	}
-	mlx_destroy_all(data);
-	if (ISLINUX && data->mlx)
+	if (data)
+		mlx_destroy_all(data);
+	if (ISLINUX && data && data->mlx)
 	{
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
-	if (code)
-		ft_putstr_fd("Error\n", 1);
-	if (msg)
-	{
-		ft_putstr_fd((char *)msg, 1);
-		ft_putchar_fd('\n', 1);
-	}
+	ft_print_exit(msg, code);
 	exit(code);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 16:01:03 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/14 10:08:57 by root             ###   ########.fr       */
+/*   Updated: 2025/06/14 14:54:58 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,20 @@ char	*get_next_line(int fd)
 	static char	*store[1024];
 	char		*line;
 
+	if (fd == -42)
+	{
+		int i = 0;
+		while (i < 1024)
+		{
+			if (store[i])
+			{
+				free(store[i]);
+				store[i] = NULL;
+			}
+			i++;
+		}
+		return (NULL);
+	}
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	store[fd] = read_stroke(fd, store[fd]);

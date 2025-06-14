@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:44:55 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/14 11:14:14 by root             ###   ########.fr       */
+/*   Updated: 2025/06/14 14:35:14 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	fill(char **map, int x, int y)
 	}
 	else
 		map[y][x] = FILL;
-	
 	fill(map, x + 1, y);
 	fill(map, x - 1, y);
 	fill(map, x, y + 1);

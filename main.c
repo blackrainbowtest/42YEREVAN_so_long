@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:48:48 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/14 09:36:59 by root             ###   ########.fr       */
+/*   Updated: 2025/06/14 14:50:08 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	if (argc != 2)
-		ft_exit_error(ERR_USAGE);
+		clean_exit(NULL, ERR_USAGE, EXIT_FAILURE);
 	ft_bzero(&data, sizeof(t_data));
 	parse_map(&data, argv[1]);
 	find_player_position(&data);

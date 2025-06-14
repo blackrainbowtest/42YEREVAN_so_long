@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 18:49:04 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/14 14:14:30 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/14 14:34:24 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		clean_exit(t_data *data, const char *msg, int code);
 void	fill(char **map, int x, int y);
 char	**copy_map(t_data *data);
 void	count_reachable(t_data *data, char **copy,
-    int *reachable_c, int *reachable_e);
+			int	*reachable_c, int *reachable_e);
 void	check_char(t_data *data, char ch, t_counts *counts);
 
 #endif
