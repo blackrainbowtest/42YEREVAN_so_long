@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 23:22:22 by root              #+#    #+#             */
-/*   Updated: 2025/06/13 17:54:02 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/14 10:01:10 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ static char	*read_map_file(char *filename, t_data *data)
 	line = get_next_line(fd);
 	while (line)
 	{
+		if (line[0] == '\n')
+		{
+			free(line);
+			free(full);
+			clean_exit(data, "Map contains empty lines!", EXIT_FAILURE);
+		}
 		tmp = full;
 		full = ft_strjoin(full, line);
 		free(tmp);

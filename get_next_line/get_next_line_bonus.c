@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 16:01:03 by aramarak          #+#    #+#             */
-/*   Updated: 2025/05/31 16:01:10 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/14 10:08:57 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
+/**
+ * @file get_next_line_bonus.c
+ *
+ * @brief Joins two strings and returns the new string
+ * @param s First string to join
+ * @param d Second string to join
+ * @returns A new string that is the concatenation of s and d
+ */
 char	*read_stroke(int fd, char *store)
 {
 	char	*buf;
@@ -40,6 +48,13 @@ char	*read_stroke(int fd, char *store)
 	return (store);
 }
 
+/**
+ * @file get_next_line_bonus.c
+ *
+ * @brief Finds the next line in the string and returns it
+ * @param ptr The string to search for the next line
+ * @returns The next line found in the string
+ */
 char	*get_next_line(int fd)
 {
 	static char	*store[1024];

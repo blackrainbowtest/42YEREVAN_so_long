@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 00:53:51 by root              #+#    #+#             */
-/*   Updated: 2025/06/13 20:09:27 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/14 09:36:32 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,10 @@ int	clean_exit(t_data *data, const char *msg, int code)
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
+	if (code)
+		ft_putstr_fd("Error\n", 1);
 	if (msg)
 	{
-		ft_putstr_fd("Exit: ", 1);
 		ft_putstr_fd((char *)msg, 1);
 		ft_putchar_fd('\n', 1);
 	}
