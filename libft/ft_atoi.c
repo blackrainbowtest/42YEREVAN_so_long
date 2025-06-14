@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aramarak <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 21:07:21 by aramarak          #+#    #+#             */
-/*   Updated: 2025/02/03 21:29:21 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/14 15:03:35 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,3 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
-/*
-#include <stdio.h>
-
-int	main()
-{
-	const char *str = "546:5";
-	int result = ft_atoi(str);
-	printf("Result: %d\n", result);
-	return (0);
-}*/

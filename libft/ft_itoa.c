@@ -59,12 +59,3 @@ char	*ft_itoa(int n)
 	str = ft_convert_to_str(str, len, num);
 	return (str);
 }
-/*
-int	main(int argc, char *argv[])
-{
-	char	*str;
-
-	str = ft_itoa(ft_atoi(argv[1]));
-	printf("\n%s\n", str);
-	return (0);
-}*/

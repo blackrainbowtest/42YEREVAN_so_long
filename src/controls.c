@@ -6,7 +6,7 @@
 /*   By: aramarak <aramarak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 17:45:50 by aramarak          #+#    #+#             */
-/*   Updated: 2025/06/14 14:14:42 by aramarak         ###   ########.fr       */
+/*   Updated: 2025/06/14 15:08:04 by aramarak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,20 @@ int	handle_keys(int keycode, t_data *data)
 	else if (keycode == 'D' || keycode == 100 || keycode == 65363)
 		move_player(1, 0, data);
 	return (0);
+}
+
+/**
+ * @file print_steps.c
+ * 
+ * @brief Prints the number of moves made by the player
+ * @param data Pointer to the game data structure
+ * @return void
+ */
+static void	print_steps(t_data *data)
+{
+	ft_putstr_fd("Moves: ", 1);
+	ft_putnbr_fd(data->player_moves, 1);
+	ft_putchar_fd('\n', 1);
 }
 
 /**
@@ -67,7 +81,7 @@ void	move_player(int dx, int dy, t_data *data)
 	data->player_x = new_x;
 	data->player_y = new_y;
 	data->player_moves++;
-	printf("Moves: %d\n", data->player_moves);
+	print_steps(data);
 	render_map(data);
 	if (next_tile == EXIT && data->collectibles == 0)
 		ft_exit_success("You win!", data);
